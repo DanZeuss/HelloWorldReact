@@ -21,13 +21,18 @@ class App extends React.Component{
         <h1>Hello Dan</h1>
         <h2>the props of the application is: {this.props.txt}</h2>
         <div>
+          <Widget update={this.update.bind(this)}/>
           <h3>The value of my state is: { this.state.txt }</h3>
-          <input type="text" onChange={this.update.bind(this)}/>
         </div>
       </div>
     )
   }
 }
+
+// example of a stateless function
+const Widget = (props) => 
+  <input type="text" onChange={props.update.bind(this)}/>
+
 
 // we can define all prop of our component
 App.propTypes = {
