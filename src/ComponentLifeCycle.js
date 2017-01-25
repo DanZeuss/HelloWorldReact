@@ -17,22 +17,26 @@ class ComponentLifeCycle extends Component {
     render() {
         console.log('render')
     return (
-            <button onClick={this.update}>{this.state.val}</button>
+            <button onClick={this.update}>{this.state.val * this.state.m}</button>
         );
     }
 
     componentWillMount()
     {
         console.log('componentWillMount');
+        this.setState({ m: 2})
     }
+
     componentDidMount()
     {
         console.log('ComponentDidMount');
+        this.inc = setInterval(this.update, 1000);
     }
 
     componentWillUnmount()
     {
         console.log('componentWillUnmount');
+        clearInterval(this.inc);
     }
 }
 
