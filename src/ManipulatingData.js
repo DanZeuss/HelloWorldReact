@@ -6,17 +6,18 @@ class ManipulatingData extends Component {
         super();
         this.state = { items: []}
     }
-
-    
+   
     componentWillMount() {
         fetch('http://swapi.co/api/people/?format=json')
         .then(response => response.json())
         .then(({results: items}) => this.setState ({items}))
     }
+
     filterList(e)
     {
         this.setState({ filter: e.target.value})
     }
+    
     render() {
         let items = this.state.items;
         if(this.state.filter)
